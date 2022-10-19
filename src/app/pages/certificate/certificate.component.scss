@@ -1,0 +1,123 @@
+@import "variables";
+
+.certificate {
+  background-color: $bg-grey;
+}
+
+.certificate__box {
+  background-color: #fff;
+  //margin-top: 70px;
+  border-radius: 10px;
+  padding: 40px 0;
+  height: 100%;
+}
+
+.certificate__header {
+  margin-left: 200px;
+}
+
+.certificate__info {
+  margin-left: 100px;
+}
+
+.certificate__info span:nth-of-type(1) {
+  color: $cl-03;
+  font-weight: 700;
+  font-size: 0.875em;
+}
+
+.certificate__info span:nth-of-type(2) {
+  color: $cl-01;
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.certificate__line .line {
+  width: calc(100% - 120px);
+  height: 0;
+  border: 1px dashed $bg-grey-three;
+}
+
+.certificate__line .ball {
+  width: 50px;
+  height: 45px;
+  background-color: $bg-grey;
+  border-radius: 100% 0 0 100%;
+}
+
+.certificate__line .ball:first-of-type {
+  margin-left: -20px;
+  border-radius: 0 100% 100% 0;
+}
+
+.certificate__line .ball:last-child {
+  margin-right: -20px;
+}
+
+.certificate__info__student div span {
+  font-weight: 700;
+  font-size: 1em;
+  text-align: center;
+}
+
+.certificate__info__student div span:nth-of-type(1) {
+  color: $cl-03;
+}
+
+.certificate__info__student div span:nth-of-type(2) {
+  color: $cl-01;
+  margin-top: 8px;
+}
+
+.certificate__download {
+  margin: 80px 0;
+}
+
+.certificate__download a {
+  background-color: $bg-red;
+  color: #fff;
+  text-decoration: none;
+  min-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.certificate__download a:hover {
+  background-color: $bg-red-two;
+}
+
+.certificate__buttons a {
+  font-weight: 400;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 0 30px;
+  min-width: 250px;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.certificate__buttons a:nth-of-type(1) {
+  background-color: $bg-green;
+}
+
+.certificate__buttons a:nth-of-type(1):hover {
+  background-color: $bg-green-two;
+}
+
+.certificate__buttons a:nth-of-type(2) {
+  background-color: $bg-red-three;
+}
+
+.certificate__buttons a:nth-of-type(2):hover {
+  background-color: $bg-red-four;
+}
+
+.certificate__back {
+  position: fixed;
+  top: 3%;
+  left: 18%;
+  cursor: pointer;
+}

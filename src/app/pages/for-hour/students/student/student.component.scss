@@ -1,0 +1,46 @@
+@import "variables";
+
+.student {
+  border-bottom: 1px solid $bg-grey-two;
+  padding: 25px 0;
+}
+
+.student.first {
+  border-top: 1px solid $bg-grey-two;
+}
+
+.student__image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+}
+
+.student__name span {
+  color: $cl-01;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.student__id span {
+  color: $cl-03;
+  font-weight: 700;
+  font-size: 0.875em;
+}
+
+.student__button a {
+  background-color: $bg-red;
+  border-radius: 5px;
+  padding: 8px 35px;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.student__button a:hover {
+  background-color: $bg-red-two;
+}
+
+.student__check {
+}

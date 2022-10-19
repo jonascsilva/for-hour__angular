@@ -1,0 +1,12 @@
+@import "src/styles/variables";
+
+:host {
+  width: 100%;
+}
+
+.loading {
+  background-color: rgba(0,0,0,0.7);
+  transition: visibility 0s linear 300ms, opacity 300ms;
+  color: #fff;
+  z-index: 100;
+}

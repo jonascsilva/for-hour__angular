@@ -1,0 +1,17 @@
+<ng-container *ngIf='!fixed; then default; else fixedLayout'></ng-container>
+
+<ng-template #default>
+  <div
+    *ngIf='visible'>
+    <img class='load' src='assets/loading.svg' alt='Loading'>
+  </div>
+</ng-template>
+
+<ng-template #fixedLayout>
+  <div
+    *ngIf='visible'
+    class='loading position-fixed d-flex vw-100 vh-100 justify-content-center align-items-center'>
+    <img class='load' src='assets/loading.svg' alt='Loading'>
+  </div>
+</ng-template>
+

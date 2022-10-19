@@ -1,0 +1,32 @@
+@import "variables";
+
+.students__header {
+  background-color: $bg-grey;
+  min-height: 220px;
+  border-radius: 0 0 30px 30px;
+}
+
+.students__header__singout-label span,
+.students__header__title span {
+  color: #fff;
+}
+
+.students__header__singout-label span {
+  font-size: 0.875em;
+}
+
+.students__header__title span {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.students__header__singout-button {
+  background-color: $bg-red;
+  border-radius: 19px;
+  padding: 19px 23px;
+  cursor: pointer;
+}
+
+.students__header__singout-button a > i {
+  color: #fff;
+}

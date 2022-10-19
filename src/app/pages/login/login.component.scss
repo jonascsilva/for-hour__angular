@@ -1,0 +1,49 @@
+@import "variables";
+
+.login__header {
+  margin: 120px 0;
+}
+
+.login__header .title {
+  font-size: 2em;
+  font-weight: 700;
+  color: $cl-01;
+}
+
+.login__form {
+  max-width: 450px;
+}
+
+.login__form input {
+  border-radius: 10px;
+  padding: 15px 20px;
+}
+
+.login__form input,
+.login__form .input-group .input-group-text {
+  border: none;
+  background-color: #F7F7F7;
+}
+
+.login__form .input-group .input-group-text {
+  cursor: pointer;
+}
+
+.login__form input,
+.login__form input::placeholder {
+  color: $cl-02;
+}
+
+.login__form input:focus {
+  box-shadow: none;
+}
+
+.login__form .login__button {
+  background-color: $bg-red;
+  color: #fff;
+}
+
+.login__form .login__button:hover {
+  background-color: $bg-red-two;
+}
+

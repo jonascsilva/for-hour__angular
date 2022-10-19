@@ -1,0 +1,19 @@
+@import "src/styles/variables";
+
+.loading {
+  background-color: $bg-black;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+  color: #fff;
+  z-index: 100;
+}
+
+.loading__text .title {
+  font-weight: 700;
+  font-size: 4em;
+  line-height: 50px;
+}
+
+.loading__text .subtitle {
+  font-weight: 400;
+  font-size: 1em;
+}
