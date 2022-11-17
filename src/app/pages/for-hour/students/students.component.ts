@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentComponent } from './student/student.component';
+import { GetStudentsService } from 'src/app/services/get-students.service';
 
 export interface Student {
-  name: string;
-  id: number;
+  nome: string;
+  matricula: number;
 }
 
 @Component({
@@ -14,19 +15,13 @@ export interface Student {
   standalone: true,
   imports: [CommonModule, StudentComponent],
 })
-export class StudentsComponent {
-  public students: Student[] = [
-    {
-      name: 'Joana Alves',
-      id: 123456,
-    },
-    {
-      name: 'Joana Alves',
-      id: 654321,
-    },
-    {
-      name: 'Joana Alves',
-      id: 123654,
-    },
-  ];
+export class StudentsComponent implements OnInit {
+  public students: Student[] = []
+
+  constructor(private studentsService: GetStudentsService) {}
+
+  ngOnInit(): void {
+      this.studentsService.getListStudents().subscribe(users => this.students = users)
+  }
+
 }
