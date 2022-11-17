@@ -1,3 +1,10 @@
+<div class='students__filter offset-md-5 col-md-2 mt-4'>
+  <div class="input-group">
+    <div class="input-group-text"><i class="bi bi-search"></i></div>
+    <input [(ngModel)]="search" type="text" class="form-control" placeholder="Pesquisar">
+  </div>
+</div>
+
 <div class='container mt-4 overflow-hidden'>
   <div class='students__button__valid d-flex justify-content-end'>
     <a>Validar Todos</a>
@@ -11,7 +18,7 @@
         <input type='checkbox' class='form-check-input'>
       </div>
 
-      <app-student *ngFor='let student of students; let i = index;' [student]='student' [index]='i'></app-student>
+      <app-student *ngFor='let student of students | appFilter:search; let i = index;' [student]='student' [index]='i'></app-student>
     </div>
   </div>
 </div>

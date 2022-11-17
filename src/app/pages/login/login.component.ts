@@ -31,6 +31,9 @@ export class LoginComponent {
     await this.auth.login(email, password).then(() => {
       this.router.navigate(['for-hour']).then(() => (this.loading = false))
     })
-    .catch(e => console.log(e, ' : Usuário não encontrado'))
+    .catch(e => {
+      console.log(e);
+      this.loading = false;
+    })
   }
 }
