@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Student } from '../students.component';
 import { RouterLinkWithHref } from '@angular/router';
+import { Student } from '../../../../interfaces/student.interface';
 
 @Component({
   selector: 'app-student',
@@ -11,11 +11,9 @@ import { RouterLinkWithHref } from '@angular/router';
   imports: [CommonModule, RouterLinkWithHref],
 })
 export class StudentComponent {
-  @Input()
-  public student!: Student;
+  @Input() student!: Student;
 
   // define algumas estruturas do css
   // index  do array
-  @Input()
-  public index!: number;
+  @Input() index!: number;
 }
