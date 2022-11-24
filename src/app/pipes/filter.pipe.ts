@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Student } from '../pages/for-hour/students/students.component';
+import { Student } from '../interfaces/student.interface';
 
 @Pipe({ name: 'appFilter', standalone: true })
 export class FilterPipe implements PipeTransform {
@@ -19,8 +19,11 @@ export class FilterPipe implements PipeTransform {
     }
     searchText = searchText.toLocaleLowerCase();
 
-    return items.filter(it => {
-      return it.nome.toLocaleLowerCase().includes(searchText) || it.matricula.toString().includes(searchText);
+    return items.filter((it) => {
+      return (
+        it.nome.toLocaleLowerCase().includes(searchText) ||
+        it.matricula.toString().includes(searchText)
+      );
     });
   }
 }

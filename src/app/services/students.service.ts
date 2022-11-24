@@ -6,12 +6,12 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class GetStudentsService {
+export class StudentsService {
 
   constructor(private db: AngularFirestore) {}
 
   getListStudents(): Observable<any> {
-    return this.db.collection('users').valueChanges().pipe();
+    return this.db.collection('users').valueChanges({idField: 'id'}).pipe();
   }
 
 }
