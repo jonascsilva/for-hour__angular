@@ -5,19 +5,9 @@
   </div>
 </div>
 
-<div class='container mt-4 overflow-hidden'>
-  <div class='students__button__valid d-flex justify-content-end'>
-    <a>Validar Todos</a>
-  </div>
-</div>
-
-<div class='container mt-3'>
+<div class='container mt-4'>
   <div class='row'>
     <div class='col-md-12' *ngIf="students.length">
-      <div class='student__check d-flex align-items-center me-5 mb-4'>
-        <input type='checkbox' class='form-check-input'>
-      </div>
-
       <app-student *ngFor='let student of students | appFilter:search; let i = index;' [student]='student' [index]='i'></app-student>
     </div>
   </div>
