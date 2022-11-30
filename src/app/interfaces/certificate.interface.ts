@@ -5,4 +5,5 @@ export interface Certificate {
   category: string;
   hours: number;
   student: Student;
+  isValidated: boolean
 }

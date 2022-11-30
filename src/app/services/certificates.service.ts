@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, mergeMap, Observable, take } from 'rxjs';
 import { Certificate } from '../interfaces/certificate.interface';
 import firebase from 'firebase/compat';
+import { Student } from '../interfaces/student.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +33,12 @@ export class CertificatesService {
           )
         )
       );
+  }
+
+  updateStatusCertificate(student: Student, certificate: Certificate): Promise<any> {
+    return this.db.collection('users').doc(student.id)
+      .collection('certificates')
+      .doc(certificate.id)
+      .update({isValidated: true})
   }
 }
