@@ -1,21 +1,5 @@
 @import "variables";
 
-.students__button__valid a {
-  font-weight: 400;
-  border-radius: 5px;
-  text-decoration: none;
-  min-width: 180px;
-  text-align: center;
-  color: #fff;
-  padding: 15px 10px;
-  background-color: $bg-green;
-  cursor: pointer;
-}
-
-.students__button__valid a:hover {
-  background-color: $bg-green-two;
-}
-
 .students__filter input,
 .students__filter .input-group-text {
   border: none;
