@@ -1,13 +1,39 @@
 <div class='certificate container-fluid vh-100 overflow-scroll' *ngIf="certificates">
-  <ng-container *ngFor="let certificate of certificates">
-  <div class='row align-items-start'>
-    <div class='certificate__box mt-3 mt-lg-5 offset-md-3 col-md-6 col-xs-12'>
+  <div class='certificate__back'>
+    <a (click)='back()'><img src='assets/back-button.png' alt='Voltar Página'></a>
+  </div>
 
-      <div class='certificate__back'>
-        <a (click)='back()'><img src='assets/back-button.png' alt='Voltar Página'></a>
+  <div class='container mt-4 overflow-hidden'>
+    <div class='button__valid d-flex justify-content-center'>
+      <button [disabled]="!certificates.length" class="pointer-event" (click)="onValidAllCertificate(student, certificates)">Validar Todos</button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!certificates.length">
+    <div class='row align-items-start'>
+      <div class='certificate__box mt-3 mt-lg-5 offset-md-3 col-md-6 col-xs-12'>
+
+        <div style="margin: 0; justify-content: center!important;" class='certificate__header d-flex justify-content-start'>
+          <div style="margin: 0" class='certificate__info d-flex flex-column align-items-center align-self-center'>
+            <span>Estudante</span>
+            <span>{{ student.nome }} não possui certificados</span>
+          </div>
+        </div>
+
+        <div class='certificate__line d-flex justify-content-around align-items-center'>
+          <div class='d-flex ball'></div>
+          <div class='d-flex line'></div>
+          <div class='d-flex ball'></div>
+        </div>
       </div>
+    </div>
+  </ng-container>
 
-      <div class='certificate__header d-flex justify-content-start'>
+  <ng-container *ngFor="let certificate of certificates | filterTarget: 'isValidated':false">
+  <div class='row align-items-start'>
+    <div class='certificate__box mt-3 mt-lg-5 offset-md-3 col-lg-6 col-md-6 col-xs-8'>
+
+      <div class='certificate__header d-flex justify-content-center gap-5'>
         <div class='certificate__image'>
           <img class='d-flex' [src]="'assets/students/' + student.matricula + '.png'" [alt]="'Foto do(a)'">
         </div>
@@ -39,12 +65,12 @@
       </div>
 
       <div class='certificate__download d-flex justify-content-center align-items-center'>
-        <a href='#'>Baixar Certificado</a>
+        <a class="pointer-event">Baixar Certificado</a>
       </div>
 
       <div class='certificate__buttons d-flex justify-content-center align-items-center flex-row'>
-        <a href='#'>Validar</a>
-        <a href='#'>Não Validar</a>
+        <a class="pointer-event" (click)="onValidCertificate(student, certificate)">Validar</a>
+        <a class="pointer-event" (click)="back()">Não Validar</a>
       </div>
 
     </div>
