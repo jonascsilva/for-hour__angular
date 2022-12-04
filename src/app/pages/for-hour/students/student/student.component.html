@@ -1,10 +1,5 @@
 <article class='student d-flex flex-row justify-content-between' [class.first]="index === 0">
-  <div class='d-flex align-items-center student__image'>
-    <div>
-      <img [src]="'assets/students/' + student.matricula + '.png'" [alt]="'Foto do(a)' + student.nome">
-    </div>
-  </div>
-  <div class='d-flex align-items-center student__name'><span>{{student.nome}}</span></div>
-  <div class='d-flex align-items-center student__id'><span>{{student.matricula}}</span></div>
+  <div class='d-flex align-items-center student__name'><span>{{student.name}}</span></div>
+  <div class='d-flex align-items-center student__id'><span>{{student.registration}}</span></div>
   <div class='d-flex align-items-center student__button'><a [routerLink]='[student.id]'>Validar</a></div>
 </article>

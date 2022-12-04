@@ -21,8 +21,8 @@ export class FilterPipe implements PipeTransform {
 
     return items.filter((it) => {
       return (
-        it.nome.toLocaleLowerCase().includes(searchText) ||
-        it.matricula.toString().includes(searchText)
+        it.name.toLocaleLowerCase().includes(searchText) ||
+        it.registration.toString().includes(searchText)
       );
     });
   }

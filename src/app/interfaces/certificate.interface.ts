@@ -4,6 +4,6 @@ export interface Certificate {
   id: string;
   category: string;
   hours: number;
-  student: Student;
-  isValidated: boolean
+  student?: Student;
+  isValidated?: boolean
 }
