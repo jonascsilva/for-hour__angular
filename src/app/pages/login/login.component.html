@@ -1,33 +1,61 @@
-<div class='login position-fixed loading d-flex flex-column vw-100 vh-100 justify-content-start align-items-center'>
+<div
+  class="login position-fixed loading d-flex flex-column vw-100 vh-100 justify-content-start align-items-center"
+>
+  <app-loading [visible]="loading" [fixed]="true"></app-loading>
 
-  <app-loading [visible]='loading' [fixed]='true'></app-loading>
-
-  <div class='login__header'>
-    <span class='title'>Bem-vindo</span>
+  <div class="login__header">
+    <span class="title">Bem-vindo</span>
   </div>
 
-  <form class='login__form row'>
+  <form #loginForm="ngForm" (ngSubmit)="login()" class="login__form row">
     <div class="col-md-12 mb-3">
-      <input required [(ngModel)]="email" name="email" type="email" class="form-control" placeholder="Email Address" />
-      <p *ngIf="error && !email" class="mensagem__error">
-        Digite um email.
+      <input
+        #email="ngModel"
+        required
+        [(ngModel)]="credentials.email"
+        name="email"
+        type="email"
+        class="form-control"
+        placeholder="Email Address"
+      />
+      <p *ngIf="(email.touched || email.dirty) && !credentials.email" class="mensagem__error">
+        Digite um email
       </p>
     </div>
     <div class="col-md-12">
       <div class="input-group">
-        <input required [(ngModel)]="password" name="password" [type]="hiddenPassword ? 'password' : 'text'" class="form-control" placeholder="Password" />
-        <div class="input-group-text" (click)='hiddenPassword = !hiddenPassword'><img src='assets/eye.png' alt='Exibir Senha'></div>
+        <input
+          #password="ngModel"
+          required
+          [(ngModel)]="credentials.password"
+          name="password"
+          [type]="hiddenPassword ? 'password' : 'text'"
+          class="form-control"
+          placeholder="Password"
+        />
+        <div
+          class="input-group-text"
+          (click)="hiddenPassword = !hiddenPassword"
+        >
+          <img src="assets/eye.png" alt="Exibir Senha" />
+        </div>
       </div>
-      <p *ngIf="error && password" class="mensagem__error">
+      <p
+        *ngIf="(password.touched || password.dirty) && !credentials.password"
+        class="mensagem__error"
+      >
         Digite uma senha
       </p>
     </div>
 
-    <div class='col-md-12 mt-5'>
-      <input type='button' (click)='login(email, password)' class='login__button form-control' value='Login'>
+    <div class="col-md-12 mt-5">
+      <input
+        type="button"
+        (click)="login()"
+        class="login__button form-control"
+        value="Login"
+      />
     </div>
   </form>
-  <p *ngIf="error" class="mensagem__error">
-    Email ou senha inválidos.
-  </p>
+  <p *ngIf="error" class="mensagem__error">Dados inválidos</p>
 </div>

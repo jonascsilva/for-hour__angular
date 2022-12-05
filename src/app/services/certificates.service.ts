@@ -3,12 +3,16 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, mergeMap, Observable, take } from 'rxjs';
 import { Certificate } from '../interfaces/certificate.interface';
 import { Student } from '../interfaces/student.interface';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CertificatesService {
-  constructor(private db: AngularFirestore) {}
+  constructor(
+    private db: AngularFirestore,
+    private storage: AngularFireStorage
+  ) {}
 
   getAllByStudent(studentId: string): Observable<any> {
     const collectionRef = this.db.collection('users').doc(studentId);
@@ -34,10 +38,24 @@ export class CertificatesService {
       );
   }
 
-  updateStatusCertificate(student: Student, certificate: Certificate): Promise<any> {
-    return this.db.collection('users').doc(student.id)
+  updateStatusCertificate(
+    student: Student,
+    certificate: Certificate
+  ): Promise<any> {
+    return this.db
+      .collection('users')
+      .doc(student.id)
       .collection('certificates')
       .doc(certificate.id)
-      .update({isValidated: true})
+      .update({ isValidated: true });
+  }
+
+  downloadCertificate(certificate: Certificate, student: Student) {
+    return this.storage
+      .ref(`users/${student.id}/${certificate.id}`)
+      .getDownloadURL()
+      .subscribe((url) => {
+        window.open(`${url}.pdf`);
+      });
   }
 }
