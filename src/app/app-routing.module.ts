@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 
 const routes: Routes = [
   {
@@ -15,13 +16,15 @@ const routes: Routes = [
       import('./pages/for-hour/for-hour.component').then(
         (m) => m.ForHourComponent
       ),
+    canActivate: [IsAuthenticatedGuard]
   },
   {
     path: 'for-hour/:id',
     loadComponent: () =>
       import('./pages/certificate/certificate.component').then(
         (m) => m.CertificateComponent
-      ),
+    ),
+    canActivate: [IsAuthenticatedGuard]
   },
   {
     path: 'login',
