@@ -65,6 +65,14 @@ export class CertificateComponent implements OnInit {
     });
   }
 
+  onRejectAllCertificate(student: Student, certificates: Certificate[]) {
+    certificates.forEach((certificate) => {
+      this._certificateService
+        .rejectStatusCertificate(student, certificate)
+        .then((_) => (this.certificates = []));
+    });
+  }
+
   onDownloadCertificate(certificate: Certificate) {
     this._certificateService.downloadCertificate(certificate, this.student);
   }
