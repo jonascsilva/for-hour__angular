@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { timer } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
+import { EmailTaken } from 'src/app/validators/email-taken';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,12 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, LoadingComponent, FormsModule],
 })
 export class LoginComponent {
+
+  public control: FormControl = new FormControl();
   email: string = '';
   password: string = '';
+  alertMsg: string = '';
+  error!: boolean;
 
 
   // inicia o load desligado
@@ -24,7 +29,7 @@ export class LoginComponent {
   // exibe a senha quando clicado no icone do olho
   public hiddenPassword: boolean = true;
 
-  constructor(private readonly router: Router, private auth: AuthService) {}
+  constructor(private readonly router: Router, private auth: AuthService, private emailTaken: EmailTaken) {}
 
   async login(email: string, password: string) {
     this.loading = true;
@@ -33,6 +38,8 @@ export class LoginComponent {
     })
     .catch(e => {
       console.log(e);
+      this.error = true;
+      //this.alertMsg = 'Um erro aconteceu, por favor tente mais tarde';
       this.loading = false;
     })
   }

@@ -8,17 +8,26 @@
 
   <form class='login__form row'>
     <div class="col-md-12 mb-3">
-      <input  [(ngModel)]="email" name="email" type="email" class="form-control" placeholder="Email Address" />
+      <input required [(ngModel)]="email" name="email" type="email" class="form-control" placeholder="Email Address" />
+      <p *ngIf="error && !email" class="mensagem__error">
+        Digite um email.
+      </p>
     </div>
     <div class="col-md-12">
       <div class="input-group">
-        <input [(ngModel)]="password" name="password" [type]="hiddenPassword ? 'password' : 'text'" class="form-control" placeholder="Password" />
+        <input required [(ngModel)]="password" name="password" [type]="hiddenPassword ? 'password' : 'text'" class="form-control" placeholder="Password" />
         <div class="input-group-text" (click)='hiddenPassword = !hiddenPassword'><img src='assets/eye.png' alt='Exibir Senha'></div>
       </div>
+      <p *ngIf="error && !password" class="mensagem__error">
+        Digite uma senha
+      </p>
     </div>
 
     <div class='col-md-12 mt-5'>
       <input type='button' (click)='login(email, password)' class='login__button form-control' value='Login'>
     </div>
   </form>
+  <p *ngIf="error && email || password" class="mensagem__error">
+    Email ou senha incorreta.
+  </p>
 </div>
