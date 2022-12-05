@@ -38,7 +38,6 @@ export class CertificateComponent implements OnInit {
         (result: { certificates: Certificate[]; student: Student }) => {
           this.certificates = result.certificates.filter((certificate) => {
             if (certificate?.isValidated || certificate.isValidated === true) {
-              console.log(certificate);
               return [];
             }
             return certificate;
