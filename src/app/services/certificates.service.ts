@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, mergeMap, Observable, take } from 'rxjs';
 import { Certificate } from '../interfaces/certificate.interface';
-import firebase from 'firebase/compat';
 import { Student } from '../interfaces/student.interface';
 
 @Injectable({

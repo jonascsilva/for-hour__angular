@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoadingComponent } from '../../components/loading/loading.component';
-import { timer } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, FormsModule } from '@angular/forms';
 import { EmailTaken } from 'src/app/validators/email-taken';
@@ -39,7 +38,6 @@ export class LoginComponent {
     .catch(e => {
       console.log(e);
       this.error = true;
-      //this.alertMsg = 'Um erro aconteceu, por favor tente mais tarde';
       this.loading = false;
     })
   }
