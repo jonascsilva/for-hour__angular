@@ -18,7 +18,7 @@
         <input required [(ngModel)]="password" name="password" [type]="hiddenPassword ? 'password' : 'text'" class="form-control" placeholder="Password" />
         <div class="input-group-text" (click)='hiddenPassword = !hiddenPassword'><img src='assets/eye.png' alt='Exibir Senha'></div>
       </div>
-      <p *ngIf="error && !password" class="mensagem__error">
+      <p *ngIf="error && password" class="mensagem__error">
         Digite uma senha
       </p>
     </div>
@@ -27,7 +27,7 @@
       <input type='button' (click)='login(email, password)' class='login__button form-control' value='Login'>
     </div>
   </form>
-  <p *ngIf="error && email || password" class="mensagem__error">
-    Email ou senha incorreta.
+  <p *ngIf="error" class="mensagem__error">
+    Email ou senha inválidos.
   </p>
 </div>
