@@ -14,13 +14,12 @@ import { EmailTaken } from 'src/app/validators/email-taken';
   imports: [CommonModule, LoadingComponent, FormsModule],
 })
 export class LoginComponent {
+  credentials = {
+    email: '',
+    password: ''
+  }
 
-  public control: FormControl = new FormControl();
-  email: string = '';
-  password: string = '';
-  alertMsg: string = '';
   error!: boolean;
-
 
   // inicia o load desligado
   public loading: boolean = false;
@@ -28,11 +27,11 @@ export class LoginComponent {
   // exibe a senha quando clicado no icone do olho
   public hiddenPassword: boolean = true;
 
-  constructor(private readonly router: Router, private auth: AuthService, private emailTaken: EmailTaken) {}
+  constructor(private readonly router: Router, private auth: AuthService) {}
 
-  async login(email: string, password: string) {
+  async login() {
     this.loading = true;
-    await this.auth.login(email, password).then(() => {
+    await this.auth.login(this.credentials.email, this.credentials.password).then(() => {
       this.router.navigate(['for-hour']).then(() => (this.loading = false))
     })
     .catch(e => {
