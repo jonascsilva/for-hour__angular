@@ -29,14 +29,11 @@
     </div>
   </ng-container>
 
-  <ng-container *ngFor="let certificate of certificates | filterTarget: 'isValidated':false">
+  <ng-container *ngFor="let certificate of certificates">
   <div class='row align-items-start'>
     <div class='certificate__box mt-3 mt-lg-5 offset-md-3 col-lg-6 col-md-6 col-xs-8'>
 
       <div class='certificate__header d-flex justify-content-center gap-5'>
-        <div class='certificate__image'>
-          <img class='d-flex' [src]="'assets/students/' + student.registration + '.png'" [alt]="'Foto do(a)'">
-        </div>
         <div class='certificate__info d-flex flex-column align-items-center align-self-center'>
           <span>Estudante</span>
           <span>{{student.name}}</span>
@@ -65,7 +62,7 @@
       </div>
 
       <div class='certificate__download d-flex justify-content-center align-items-center'>
-        <a class="pointer-event">Baixar Certificado</a>
+        <a class="pointer-event" (click)="onDownloadCertificate(certificate)">Baixar Certificado</a>
       </div>
 
       <div class='certificate__buttons d-flex justify-content-center align-items-center flex-row'>
