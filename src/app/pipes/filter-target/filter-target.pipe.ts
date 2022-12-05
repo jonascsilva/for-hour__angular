@@ -10,7 +10,10 @@ export class FilterTargetPipe implements PipeTransform {
     }
 
     return array.filter((item) => {
-      if (item[prop] === target || !item[prop]) {
+      if (!item[prop]) {
+        return item
+      }
+      if (item[prop] === target) {
         return item
       }
     });
