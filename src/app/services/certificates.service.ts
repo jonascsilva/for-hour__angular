@@ -50,6 +50,18 @@ export class CertificatesService {
       .update({ isValidated: true });
   }
 
+  rejectStatusCertificate(
+    student: Student,
+    certificate: Certificate
+  ): Promise<any> {
+    return this.db
+      .collection('users')
+      .doc(student.id)
+      .collection('certificates')
+      .doc(certificate.id)
+      .update({ isValidated: false });
+  }
+
   downloadCertificate(certificate: Certificate, student: Student) {
     return this.storage
       .ref(`users/${student.id}/${certificate.id}`)
