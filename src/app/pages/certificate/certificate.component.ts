@@ -36,12 +36,7 @@ export class CertificateComponent implements OnInit {
       .getAllByStudent(this.studentId)
       .subscribe(
         (result: { certificates: Certificate[]; student: Student }) => {
-          this.certificates = result.certificates.filter((certificate) => {
-            if (certificate?.isValidated || certificate.isValidated === true) {
-              return [];
-            }
-            return certificate;
-          });
+          this.certificates = result.certificates.filter((certificate) => !certificate?.isValidated);
           this.student = result.student;
         }
       );
