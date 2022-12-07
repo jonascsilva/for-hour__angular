@@ -64,10 +64,10 @@ export class CertificatesService {
 
   downloadCertificate(certificate: Certificate, student: Student) {
     return this.storage
-      .ref(`users/${student.id}/${certificate.id}`)
+      .ref(`users/${student.id}/${certificate.id}.pdf`)
       .getDownloadURL()
       .subscribe((url) => {
-        window.open(`${url}.pdf`);
+        window.open(url);
       });
   }
 }
