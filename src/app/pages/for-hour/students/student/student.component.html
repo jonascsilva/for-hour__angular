@@ -1,5 +1,17 @@
-<article class='student d-flex flex-row justify-content-between' [class.first]="index === 0">
-  <div class='d-flex align-items-center student__name'><span>{{student.name}}</span></div>
-  <div class='d-flex align-items-center student__id'><span>{{student.registration}}</span></div>
-  <div class='d-flex align-items-center student__button'><a [routerLink]='[student.id]'>Validar</a></div>
+<article
+  class="student d-flex flex-row justify-content-between"
+  [class.first]="index === 0"
+>
+  <div class="d-flex align-items-center student__name">
+    <span>{{ student.name }}</span>
+  </div>
+  <div class="d-flex align-items-center student__id">
+    <span>{{ student.registration }}</span>
+  </div>
+  <div class="d-flex align-items-center student__name">
+    <span>{{ validatedHours }}/238hrs</span>
+  </div>
+  <div class="d-flex align-items-center student__button">
+    <a [routerLink]="[student.id]">Validar</a>
+  </div>
 </article>
