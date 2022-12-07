@@ -24,4 +24,10 @@ export class AuthService {
     });
   }
 
+
+  logout() {
+    localStorage.removeItem('user');
+    this._isLoggedIn$.next(false);
+  }
+
 }

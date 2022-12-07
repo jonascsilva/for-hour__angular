@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormControl, FormsModule } from '@angular/forms';
-import { EmailTaken } from 'src/app/validators/email-taken';
-import { delay, tap } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -31,10 +30,13 @@ export class LoginComponent implements OnInit {
   constructor(private readonly router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.loading = true;
-    this.auth.isLoggedIn$.pipe(delay(1000)).subscribe((isLogged) => {
-      if (isLogged)
-        this.router.navigate(['for-hour']).then(() => (this.loading = false));
+    this.auth.isLoggedIn$.subscribe((isLogged) => {
+      if (isLogged) {
+        this.loading = true;
+        this.router.navigate(['for-hour']).then(() => setTimeout(() => {
+          this.loading = false;
+        }, 1000));
+      }
     });
   }
 

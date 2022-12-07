@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +11,9 @@ import { Router } from '@angular/router';
   imports: [CommonModule],
 })
 export class HeaderComponent {
-  constructor(private readonly router: Router) {}
-
+  constructor(private readonly router: Router, private auth: AuthService) {}
   logout() {
-    localStorage.removeItem('user')
+    this.auth.logout();
     this.router.navigate(['login']).then();
   }
 }
