@@ -13,13 +13,14 @@ export class AuthService {
 
   constructor(private angularFireAuth: AngularFireAuth) {
       this.userData$ = angularFireAuth.authState;
+      if (localStorage.getItem('user')) this._isLoggedIn$.next(true);
   }
 
 
   login(email: string, password: string): Promise<any> {
     return this.angularFireAuth.signInWithEmailAndPassword(email, password).then((user) => {
-      this._isLoggedIn$.next(true);
       localStorage.setItem('user', JSON.stringify(user));
+      this._isLoggedIn$.next(true);
     });
   }
 

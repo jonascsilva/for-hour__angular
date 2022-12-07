@@ -13,6 +13,7 @@ export class HeaderComponent {
   constructor(private readonly router: Router) {}
 
   logout() {
+    localStorage.removeItem('user')
     this.router.navigate(['login']).then();
   }
 }
