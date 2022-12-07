@@ -34,17 +34,11 @@ export class StudentComponent implements OnInit {
       .getAllByStudent(this.student.id)
       .pipe(
         map((response: CertificateResponse) =>
-          response.certificates.filter(
-            (_: Certificate) => _?.isValidated === true
-          )
+          response.certificates
+            .filter((_: Certificate) => _?.isValidated === true)
+            .reduce((sum, current) => sum + current.hours, 0)
         )
       )
-      .subscribe(
-        (certificates) =>
-          (this.validatedHours = certificates.reduce(
-            (sum, current) => sum + current.hours,
-            0
-          ))
-      );
+      .subscribe((sum) => (this.validatedHours = sum));
   }
 }
